@@ -1,0 +1,185 @@
+/* Palette copied from computerome.dk/styles.css */
+:root {
+  --cr-blue-dark: #1b365f;
+  --cr-blue-dust: #086e95;
+  --cr-blue-mid: #075faa;
+  --cr-blue-light: #43a4d9;
+  --cr-teal-dark: #125b53;
+  --cr-teal-dark-hover: #76a09d;
+  --cr-teal-light: #d2dedd;
+  --cr-teal-light-hover: #c1cdcc;
+  --cr-red: #da1e28;
+  --cr-orange: #fa832b;
+  --cr-yellow: #f1c12a;
+  --cr-green: #0ca678;
+  --cr-dark-grey: #3c3c3b;
+
+  --md-primary-fg-color: var(--cr-teal-dark);
+  --md-primary-fg-color--light: var(--cr-teal-dark-hover);
+  --md-primary-fg-color--dark: #0c3f3a;
+  --md-primary-bg-color: #fff;
+  --md-accent-fg-color: #125b53b3;
+  --md-accent-fg-color--transparent: #125b531a;
+  --md-typeset-a-color: var(--cr-teal-dark);
+
+  --cr-heading: var(--cr-teal-dark);
+  --cr-quote-bg: var(--cr-teal-light);
+  --cr-quote-fg: var(--cr-teal-dark);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-accent-fg-color: var(--cr-teal-light-hover);
+  --md-accent-fg-color--transparent: #76a09d1a;
+  --md-typeset-a-color: var(--cr-teal-dark-hover);
+
+  --cr-heading: var(--cr-teal-dark-hover);
+  --cr-quote-bg: #125b5340;
+  --cr-quote-fg: var(--cr-teal-light);
+}
+
+/* Header: solid teal bar with thin white title, as on the live site */
+.md-header__topic:first-child {
+  font-weight: 300;
+}
+
+/* Headings: bold, H1 in teal; teal rule like the wiki's <hr> */
+.md-typeset h1 {
+  color: var(--cr-heading);
+  font-weight: 700;
+}
+
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+  font-weight: 700;
+}
+
+.md-typeset hr {
+  border-bottom: 4px solid var(--cr-teal-dark);
+  margin: 0.5rem 0 1.5rem;
+}
+
+.md-typeset .grid.cards hr {
+  border-bottom-width: 2px;
+  margin: 0.5rem 0;
+}
+
+/* Note-style quotes: light teal panel, teal left border */
+.md-typeset blockquote,
+.md-typeset :is(.admonition, details):is(.note, .abstract) {
+  color: var(--cr-quote-fg);
+  background-color: var(--cr-quote-bg);
+  border: none;
+  border-left: 4px solid var(--cr-teal-dark);
+  border-radius: 0;
+}
+
+.md-typeset :is(.note, .abstract) > :is(.admonition-title, summary) {
+  color: var(--cr-quote-fg);
+  background-color: transparent;
+}
+
+.md-typeset :is(.note, .abstract) > :is(.admonition-title, summary)::before,
+.md-typeset :is(.note, .abstract) > summary::after {
+  background-color: var(--cr-quote-fg);
+  color: var(--cr-quote-fg);
+}
+
+/* Info boxes: solid navy; tips: solid teal; white text and icon */
+.md-typeset :is(.admonition, details):is(.info, .tip) {
+  color: #fff;
+  border: none;
+  border-radius: 0;
+}
+
+.md-typeset :is(.admonition, details).info {
+  background-color: var(--cr-blue-dark);
+}
+
+.md-typeset :is(.admonition, details).tip {
+  background-color: var(--cr-teal-dark);
+}
+
+.md-typeset :is(.info, .tip) > :is(.admonition-title, summary) {
+  color: #fff;
+  font-size: 0.75rem;
+  background-color: transparent;
+}
+
+.md-typeset :is(.info, .tip) > :is(.admonition-title, summary)::before {
+  background-color: #fff;
+}
+
+.md-typeset :is(.info, .tip) > summary::after {
+  color: #fff;
+}
+
+.md-typeset :is(.info, .tip) a {
+  color: #fff;
+  font-weight: 900;
+  text-decoration: underline;
+}
+
+.md-typeset :is(.info, .tip) :not(pre) > code {
+  color: #fff;
+  background-color: #ffffff26;
+}
+
+/* Remaining types use the other brand colors */
+.md-typeset :is(.admonition, details):is(.warning, .attention, .caution) {
+  border-color: var(--cr-orange);
+}
+
+.md-typeset :is(.warning, .attention, .caution) > :is(.admonition-title, summary) {
+  background-color: #fa832b1a;
+}
+
+.md-typeset :is(.warning, .attention, .caution) > :is(.admonition-title, summary)::before {
+  background-color: var(--cr-orange);
+}
+
+.md-typeset :is(.admonition, details):is(.danger, .error, .failure) {
+  border-color: var(--cr-red);
+}
+
+.md-typeset :is(.danger, .error, .failure) > :is(.admonition-title, summary) {
+  background-color: #da1e281a;
+}
+
+.md-typeset :is(.danger, .error, .failure) > :is(.admonition-title, summary)::before {
+  background-color: var(--cr-red);
+}
+
+.md-typeset :is(.admonition, details):is(.question, .example) {
+  border-color: var(--cr-blue-mid);
+}
+
+.md-typeset :is(.question, .example) > :is(.admonition-title, summary) {
+  background-color: #075faa1a;
+}
+
+.md-typeset :is(.question, .example) > :is(.admonition-title, summary)::before,
+.md-typeset :is(.question, .example) > summary::after {
+  background-color: var(--cr-blue-mid);
+  color: var(--cr-blue-mid);
+}
+
+.md-typeset :is(.admonition, details).success {
+  border-color: var(--cr-green);
+}
+
+.md-typeset .success > :is(.admonition-title, summary) {
+  background-color: #0ca6781a;
+}
+
+.md-typeset .success > :is(.admonition-title, summary)::before {
+  background-color: var(--cr-green);
+}
+
+/* Videos */
+.md-typeset video {
+  width: 100%;
+  border-radius: 0.2rem;
+  box-shadow: var(--md-shadow-z2);
+  margin: 0.5em 0 1em;
+}
