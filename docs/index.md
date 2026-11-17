@@ -1,5 +1,5 @@
 ---
-title: Computerome Wiki
+title: Home
 description: User documentation for Computerome HPC and Cloud. Accounts, 2FA, projects, compute, storage, software and running jobs.
 hide:
   - navigation
