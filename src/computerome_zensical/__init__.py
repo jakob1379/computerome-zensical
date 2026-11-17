@@ -181,7 +181,7 @@ def html_to_markdown(text: str) -> str:
     text = re.sub(
         r"(?:<p>([^<]*?)</p>\s*)?<video[^>]*>\s*<source src=\"([^\"]+)\"[^>]*>.*?</video>",
         lambda m: (f"**{m[1].strip().rstrip(':')}**\n\n" if m[1] else "")
-        + f'<video controls preload="metadata" width="100%"><source src="{m[2]}" type="video/mp4"></video>\n',
+        + f'<video controls preload="none" width="100%"><source src="{m[2]}" type="video/mp4"></video>\n',
         text,
         flags=re.S,
     )

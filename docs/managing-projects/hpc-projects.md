@@ -24,7 +24,7 @@ If you request a new project, you will automatically become its **Legal Owner**.
 
 :lucide-circle-play: **Video: create an HPC project**
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Creat_HPC_project_668b504814.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Creat_HPC_project_668b504814.mp4" type="video/mp4"></video>
 
 ### Invite new users
 
@@ -41,7 +41,7 @@ If you request a new project, you will automatically become its **Legal Owner**.
 
 :lucide-circle-play: **Video: invite a user to an HPC project**
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/HPC_user_invite_57526bbf88.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/HPC_user_invite_57526bbf88.mp4" type="video/mp4"></video>
 
 ## Group Management
 
@@ -53,7 +53,7 @@ As a **Legal Owner** or **Technical Owner**, you are responsible for keeping the
 
 :lucide-circle-play: **Video: HPC group modification**
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/HPC_Group_Modification_e137cdfacb.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/HPC_Group_Modification_e137cdfacb.mp4" type="video/mp4"></video>
 
 ## HPC Usage
 
@@ -75,7 +75,7 @@ To monitor compute and storage usage for your HPC group:
 
 :lucide-circle-play: **Video: HPC usage**
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/HPC_Usage_a7e90113b0.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/HPC_Usage_a7e90113b0.mp4" type="video/mp4"></video>
 
 ## HPC Cost Calculation
 

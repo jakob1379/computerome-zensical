@@ -1,0 +1,76 @@
+{%- set site = "https://computerome.dk" -%}
+<footer class="md-footer">
+  {% if "navigation.footer" in features %}
+    {% if page.previous_page or page.next_page %}
+      {% if page.meta and page.meta.hide %}
+        {% set hidden = "hidden" if "footer" in page.meta.hide %}
+      {% endif %}
+      <nav class="md-footer__inner md-grid" aria-label="{{ lang.t('footer') }}" {{ hidden }}>
+        {% if page.previous_page %}
+          {% set direction = lang.t("footer.previous") %}
+          <a href="{{ page.previous_page.url | url }}" class="md-footer__link md-footer__link--prev" aria-label="{{ direction }}: {{ page.previous_page.title | e }}">
+            <div class="md-footer__button md-icon">
+              {% set icon = config.theme.icon.previous or "material/arrow-left" %}
+              {% include ".icons/" ~ icon ~ ".svg" %}
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">{{ direction }}</span>
+              <div class="md-ellipsis">{{ page.previous_page.title }}</div>
+            </div>
+          </a>
+        {% endif %}
+        {% if page.next_page %}
+          {% set direction = lang.t("footer.next") %}
+          <a href="{{ page.next_page.url | url }}" class="md-footer__link md-footer__link--next" aria-label="{{ direction }}: {{ page.next_page.title | e }}">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">{{ direction }}</span>
+              <div class="md-ellipsis">{{ page.next_page.title }}</div>
+            </div>
+            <div class="md-footer__button md-icon">
+              {% set icon = config.theme.icon.next or "material/arrow-right" %}
+              {% include ".icons/" ~ icon ~ ".svg" %}
+            </div>
+          </a>
+        {% endif %}
+      </nav>
+    {% endif %}
+  {% endif %}
+  <div class="cr-footer">
+    <div class="cr-footer__grid md-grid">
+      <div class="cr-footer__col">
+        <img class="cr-footer__logo" src="{{ config.theme.logo | url }}" alt="Computerome logo" width="120" height="30" loading="lazy">
+        <p><a href="mailto:computerome@dtu.dk">computerome@dtu.dk</a></p>
+        <p><a href="https://dk.linkedin.com/company/computerome">{% include ".icons/fontawesome/brands/linkedin.svg" %} LinkedIn</a></p>
+        <p>&copy; Computerome</p>
+      </div>
+      <div class="cr-footer__col">
+        <p class="cr-footer__heading">Status</p>
+        <p><a href="{{ site }}/operational-status">Maintenance &amp; operational status</a></p>
+        <p><a href="{{ site }}/server-status">Server status</a></p>
+      </div>
+      <div class="cr-footer__col">
+        <p class="cr-footer__heading">User Portal</p>
+        <p><a href="{{ site }}/create-account">Create account</a></p>
+        <p><a href="{{ site }}/login">Sign in</a></p>
+      </div>
+      <div class="cr-footer__col">
+        <p class="cr-footer__heading">Contact us</p>
+        <p><a href="{{ site }}/contact-us">Contact us</a></p>
+        <p><a href="{{ site }}/user-support">User support</a></p>
+        <p><a href="{{ site }}/our-team">Sales</a></p>
+      </div>
+      <div class="cr-footer__col">
+        <p class="cr-footer__heading">Policies</p>
+        <p><a href="{{ site }}/policies#terms">Terms of use</a></p>
+        <p><a href="{{ site }}/policies#security">Security policy</a></p>
+        <p><a href="{{ site }}/policies#privacy">Privacy policy</a></p>
+        <p><a href="{{ site }}/cookie-declaration">Cookie policy</a></p>
+      </div>
+    </div>
+    <div class="cr-footer__meta md-grid">
+      Unofficial port of <a href="{{ site }}/wiki">computerome.dk/wiki</a>
+      {% if config.repo_url %}&middot; <a href="{{ config.repo_url }}">Source</a>{% endif %}
+      &middot; Made with <a href="https://zensical.org/">Zensical</a>
+    </div>
+  </div>
+</footer>

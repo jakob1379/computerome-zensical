@@ -101,7 +101,7 @@ Watch the full video guide where we demonstrate:
 
 Submitting jobs to HPC:
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Submitting_jobs_to_HPC_704ea11d9c.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Submitting_jobs_to_HPC_704ea11d9c.mp4" type="video/mp4"></video>
 
 ## Job Policies and Limits on HPC cluster
 
@@ -165,7 +165,7 @@ Instead of submitting a script and waiting for results, you are placed directly 
 
 ### Interactive Job Video Guideline
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Interactive_Job_a2d99f0822.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Interactive_Job_a2d99f0822.mp4" type="video/mp4"></video>
 
 ## Reservation on HPC cluster
 

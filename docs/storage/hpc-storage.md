@@ -149,7 +149,7 @@ Computerome provides a **shared SFTP server** for all HPC users to transfer file
 
 :lucide-monitor-play: **HPC SFTP File Transfer video guideline**
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/HPC_File_Transfer_5a85479e39.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/HPC_File_Transfer_5a85479e39.mp4" type="video/mp4"></video>
 
 ## HPC File Manager
 
@@ -170,4 +170,4 @@ This interface allows you to:
 
 :lucide-monitor-play: **HPC NextCloud FileManagement video guideline**
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Next_Cloud_File_Management_d2eff035ee.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Next_Cloud_File_Management_d2eff035ee.mp4" type="video/mp4"></video>

@@ -1,0 +1,109 @@
+{%- set site = "https://computerome.dk" -%}
+{%- set menu = [
+  ("IT solutions", [
+    ("Public Sector AI", "/public-sector-ai"),
+    ("AI LLM Platform", "/ai-llm-platform"),
+    ("Statistics Denmark Data Analysis", "/statistics-denmark-data-analysis"),
+    ("Services", "/services"),
+  ]),
+  ("Infrastructure", [
+    ("AI infrastructure", "/ai-solution"),
+    ("HPC servers", "/hpc-servers"),
+    ("Cloud servers", "/cloud-servers"),
+  ]),
+  ("Support", [
+    ("Getting started", "/getting-started-on-computerome"),
+    ("Documentation", "/wiki"),
+    ("Request support", "/user-support"),
+    ("Operational status", "/operational-status"),
+  ]),
+  ("Inspiration", [
+    ("Case stories", "/case-stories"),
+    ("Insights", "/insights"),
+    ("News", "/news"),
+  ]),
+  ("About", [
+    ("Company", "/about"),
+    ("Our team", "/our-team"),
+    ("Transparency", "/transparency"),
+    ("Our data centres", "/our-data-centres"),
+    ("Digital sovereignty", "/digital-sovereignty"),
+    ("Contact us", "/contact-us"),
+  ]),
+] -%}
+{% set class = "md-header" %}
+{% if "navigation.tabs.sticky" in features %}
+  {% set class = class ~ " md-header--shadow md-header--lifted" %}
+{% elif "navigation.tabs" not in features %}
+  {% set class = class ~ " md-header--shadow" %}
+{% endif %}
+<header class="{{ class }}" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header') }}">
+    <a href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}" title="{{ config.site_name | e }}" class="md-header__button md-logo" aria-label="{{ config.site_name }}" data-md-component="logo">
+      {% include "partials/logo.html" %}
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      {% set icon = config.theme.icon.menu or "material/menu" %}
+      {% include ".icons/" ~ icon ~ ".svg" %}
+      <span class="md-visually-hidden">{{ lang.t('nav') }}</span>
+    </label>
+    <ul class="cr-menu" aria-label="computerome.dk">
+      {% for label, items in menu %}
+        <li class="cr-menu__item">
+          <button class="cr-menu__toggle" type="button" aria-haspopup="true">{{ label }}</button>
+          <ul class="cr-menu__submenu">
+            {% for text, path in items %}
+              <li><a href="{{ site ~ path }}">{{ text }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+    </ul>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            {{ config.site_name }}
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            {% if page.meta and page.meta.title %}
+              {{ page.meta.title }}
+            {% else %}
+              {{ page.title }}
+            {% endif %}
+          </span>
+        </div>
+      </div>
+    </div>
+    {% if config.theme.palette %}
+      {% if not config.theme.palette is mapping %}
+        {% include "partials/palette.html" %}
+      {% endif %}
+    {% endif %}
+    {% if not config.theme.palette is mapping %}
+      {% include "partials/javascripts/palette.html" %}
+    {% endif %}
+    {% if "search" in config.plugins %}
+      {% set search = config.plugins["search"] | attr("config") %}
+      {% if search.enabled %}
+        <label class="md-header__button md-icon" for="__search">
+          {% set icon = config.theme.icon.search or "material/magnify" %}
+          {% include ".icons/" ~ icon ~ ".svg" %}
+          <span class="md-visually-hidden">{{ lang.t('search') }}</span>
+        </label>
+        {% include "partials/search.html" %}
+      {% endif %}
+    {% endif %}
+    <a class="cr-signin" href="{{ site }}/login">
+      {% include ".icons/lucide/circle-user.svg" %}
+      <span>Sign in</span>
+    </a>
+  </nav>
+  {% if "navigation.tabs.sticky" in features %}
+    {% if "navigation.tabs" in features %}
+      {% include "partials/tabs.html" %}
+    {% endif %}
+  {% endif %}
+</header>

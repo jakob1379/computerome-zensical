@@ -24,7 +24,7 @@ If you request a new project, you will automatically become its **Legal Owner**.
 
 :lucide-circle-play: **Video: create a Cloud project**
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Create_Cloud_Project_ef9d085df3.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Create_Cloud_Project_ef9d085df3.mp4" type="video/mp4"></video>
 
 ## Invite new users (Cloud)
 
@@ -40,7 +40,7 @@ If you request a new project, you will automatically become its **Legal Owner**.
 
 :lucide-circle-play: **Video: invite a user to a Cloud project**
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Cloud_Invite_User_be03cf9d25.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Cloud_Invite_User_be03cf9d25.mp4" type="video/mp4"></video>
 
 !!! note "What the invited user receives"
 
@@ -80,7 +80,7 @@ In addition to individual user management, Cloud projects also support **interna
 
 :lucide-circle-play: **Video: Cloud group management**
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Cloud_Group_Management_2e3074bb3a.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Cloud_Group_Management_2e3074bb3a.mp4" type="video/mp4"></video>
 
 ## Cloud Usage
 
@@ -106,7 +106,7 @@ To monitor compute and storage usage for your Cloud project:
 
 :lucide-circle-play: **Video: Cloud usage**
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Cloud_Usage_688dc59ca9.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Cloud_Usage_688dc59ca9.mp4" type="video/mp4"></video>
 
 ## Cloud Cost Calculation
 

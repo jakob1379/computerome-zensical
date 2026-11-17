@@ -27,7 +27,7 @@ You can download and install Omnissa Horizon Client by going to
 
 :lucide-monitor-play: **Cloud Login video guideline**
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Cloud_Login_b7c22b1798.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Cloud_Login_b7c22b1798.mp4" type="video/mp4"></video>
 
 ### If Your Cloud Has a Queueing System
 
@@ -49,4 +49,4 @@ To manage resources:
 
 :lucide-monitor-play: **Cloud Scaling video guideline**
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Cloud_Scaling_19b7cc0582.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Cloud_Scaling_19b7cc0582.mp4" type="video/mp4"></video>

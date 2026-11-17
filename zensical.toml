@@ -56,6 +56,8 @@ extra_css = ["stylesheets/extra.css"]
 
 [project.theme]
 variant = "classic"
+custom_dir = "overrides"
+logo = "assets/computerome-logo.svg"
 language = "en"
 features = [
   "announce.dismiss",
@@ -80,10 +82,6 @@ features = [
   "search.highlight",
   "toc.follow",
 ]
-
-[project.theme.icon]
-logo = "lucide/server"
-repo = "lucide/git-branch"
 
 [project.theme.font]
 text = "Inter"
@@ -110,19 +108,34 @@ accent = "custom"
 toggle.icon = "lucide/moon"
 toggle.name = "Switch to system preference"
 
-[[project.extra.social]]
-icon = "fontawesome/brands/linkedin"
-link = "https://dk.linkedin.com/company/computerome"
-name = "Computerome on LinkedIn"
-
-[[project.extra.social]]
-icon = "lucide/globe"
-link = "https://computerome.dk"
-name = "computerome.dk"
-
 [project.plugins.tags]
 
 [project.plugins.glightbox]
+
+[project.plugins.minify]
+minify_html = true
+minify_js = true
+minify_css = true
+minify_inline_js = true
+minify_inline_css = true
+cache_safe = true
+css_files = ["stylesheets/extra.css"]
+htmlmin_opts.remove_comments = true
+htmlmin_opts.reduce_boolean_attributes = true
+
+[project.plugins.optimize]
+
+[project.plugins.privacy]
+assets_exclude = [
+  "delphiapp.computerome.dk/*",
+  "unpkg.com/ace-builds*",
+  "unpkg.com/pyodide*",
+  "cdn.jsdelivr.net/pyodide/*",
+  "imasdk.googleapis.com/*",
+  "pagead2.googlesyndication.com/*",
+  "s0.2mdn.net/*",
+  "player.vimeo.com/*",
+]
 
 [project.plugins.redirects.redirect_maps]
 "user-guide.md" = "getting-started/index.md"

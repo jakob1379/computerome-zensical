@@ -21,7 +21,7 @@ To start using **Computerome**, you need a user account — whether you plan to 
 
 :lucide-circle-play: **Video: create an account**
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Create_Account_59205a0309.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Create_Account_59205a0309.mp4" type="video/mp4"></video>
 
 ## Step 2: Activate your 2FA token
 

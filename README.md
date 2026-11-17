@@ -11,6 +11,9 @@ uv run zensical serve      # live preview on http://localhost:8000
 uv run zensical build      # static site in site/
 ```
 
+Builds need [`pngquant`](https://pngquant.org) on `PATH` for the image optimizer
+(`apt install pngquant`, `brew install pngquant` or `nix shell nixpkgs#pngquant`).
+
 Pushes to `main` deploy to GitHub Pages via `.github/workflows/docs.yml`.
 
 ## Layout
@@ -20,7 +23,8 @@ Pushes to `main` deploy to GitHub Pages via `.github/workflows/docs.yml`.
 | `docs/` | Page sources. The folder structure mirrors the old `/wiki/<slug>` URLs. |
 | `docs/assets/uploads/` | Images and PDF forms vendored from the CMS. |
 | `includes/abbreviations.md` | Glossary appended to every page; terms get hover tooltips. |
-| `zensical.toml` | Navigation, theme, plugins (tags, glightbox, redirects, llms.txt). |
+| `zensical.toml` | Navigation, theme, plugins (tags, glightbox, redirects, llms.txt, minify, optimize, privacy). |
+| `overrides/partials/` | computerome.dk header (menus, sign-in) and footer. |
 | `src/computerome_zensical/` | One-shot importer from the Strapi API. |
 
 ## Re-importing from the CMS

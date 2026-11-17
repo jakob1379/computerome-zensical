@@ -177,7 +177,7 @@ Data movement into and out of Cloud projects is managed through a secure approva
 
 :lucide-monitor-play: **Cloud Import Export video guideline**
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Cloud_Import_Export_7bde903d1e.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Cloud_Import_Export_7bde903d1e.mp4" type="video/mp4"></video>
 
 ## Cloud File Manager
 
@@ -200,4 +200,4 @@ If your Cloud project is **restricted** (as configured by the Legal/Technical Ow
 
 :lucide-monitor-play: **Cloud File Manager video guideline**
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Cloud_File_Manager_5c73bd563e.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Cloud_File_Manager_5c73bd563e.mp4" type="video/mp4"></video>

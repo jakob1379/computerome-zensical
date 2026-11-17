@@ -176,6 +176,157 @@
   background-color: var(--cr-green);
 }
 
+/* Header: computerome.dk logo, menu and sign-in */
+.md-header__button.md-logo img {
+  height: 1.5rem;
+  width: auto;
+}
+
+.cr-menu {
+  display: none;
+  margin: 0 0 0 0.6rem;
+  padding: 0;
+  list-style: none;
+}
+
+.cr-menu__item {
+  position: relative;
+}
+
+.cr-menu__toggle {
+  height: 2.4rem;
+  padding: 0 0.6rem;
+  color: inherit;
+  font: inherit;
+  font-size: 0.75rem;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.cr-menu__submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 5;
+  display: none;
+  min-width: 12rem;
+  margin: 0;
+  padding: 0.4rem 0;
+  list-style: none;
+  background-color: var(--md-default-bg-color);
+  border-radius: 0.2rem;
+  box-shadow: var(--md-shadow-z2);
+}
+
+.cr-menu__item:hover > .cr-menu__submenu,
+.cr-menu__item:focus-within > .cr-menu__submenu {
+  display: block;
+}
+
+.cr-menu__submenu a {
+  display: block;
+  padding: 0.4rem 0.8rem;
+  color: var(--md-default-fg-color);
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.cr-menu__submenu a:is(:hover, :focus) {
+  color: var(--cr-quote-fg);
+  background-color: var(--cr-quote-bg);
+}
+
+@media screen and (min-width: 76.25em) {
+  .cr-menu {
+    display: flex;
+  }
+
+  .md-header__title > * {
+    visibility: hidden;
+  }
+}
+
+.cr-signin {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin: 0 0.4rem;
+  padding: 0.4rem;
+  color: inherit;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.cr-signin svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+@media screen and (max-width: 44.984375em) {
+  .cr-signin span {
+    display: none;
+  }
+}
+
+/* Footer: computerome.dk columns on teal */
+.md-footer {
+  background-color: #0c3f3a;
+}
+
+.cr-footer {
+  padding: 2rem 0 1rem;
+  color: #fff;
+  background-color: var(--cr-teal-dark);
+}
+
+.cr-footer__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 1.2rem;
+  padding: 0 0.8rem;
+}
+
+.cr-footer p {
+  margin: 0 0 0.4rem;
+  font-size: 0.6rem;
+}
+
+.cr-footer .cr-footer__heading {
+  margin-bottom: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.cr-footer a {
+  color: #fff;
+}
+
+.cr-footer a:is(:hover, :focus) {
+  text-decoration: underline;
+}
+
+.cr-footer svg {
+  width: 0.8rem;
+  height: 0.8rem;
+  vertical-align: -0.1rem;
+  fill: currentColor;
+}
+
+.cr-footer__logo {
+  width: auto;
+  height: 1.5rem;
+  margin: 0.2rem 0 0.6rem;
+}
+
+.cr-footer__meta {
+  margin-top: 1.6rem;
+  padding: 0.8rem 0.8rem 0;
+  color: #ffffffb3;
+  font-size: 0.6rem;
+  border-top: 1px solid #ffffff33;
+}
+
 /* Videos */
 .md-typeset video {
   width: 100%;

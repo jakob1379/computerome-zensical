@@ -45,7 +45,7 @@ Use the following template:
 
 ### Environment modules video guideline
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Services_tools_66e901c5cb.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Services_tools_66e901c5cb.mp4" type="video/mp4"></video>
 
 !!! note
 
@@ -85,7 +85,7 @@ Please check the **official documentation** of each tool to determine how to set
 
 ### Custom tool installation video guideline
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Custom_Tool_a441c48186.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Custom_Tool_a441c48186.mp4" type="video/mp4"></video>
 
 !!! note
 

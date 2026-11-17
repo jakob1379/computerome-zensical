@@ -42,7 +42,7 @@ Use the following template:
 
 ### Environment modules video guideline
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Custom_Tool_a441c48186.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Custom_Tool_a441c48186.mp4" type="video/mp4"></video>
 
 !!! note
 
@@ -62,7 +62,7 @@ Because RStudio is not designed to be delivered as an Environment Module or to r
 
 ### RStudio Server on HPC video guideline
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Rstudio_server_on_HPC_ee82946564.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Rstudio_server_on_HPC_ee82946564.mp4" type="video/mp4"></video>
 
 ## HPC Jupyter Notebook Server
 
@@ -76,7 +76,7 @@ Similar to RStudio, Jupyter is not designed to run natively as an Environment Mo
 
 ### Jupyter Notebook on HPC video guideline
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Jupyter_Notebook_on_HPC_5acb825199.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Jupyter_Notebook_on_HPC_5acb825199.mp4" type="video/mp4"></video>
 
 ## HPC VS Code Server
 
@@ -92,7 +92,7 @@ Like RStudio and Jupyter, VS Code web server is not designed to run directly as 
 
 ### Visual Studio Code on HPC video guideline
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/vs_Code_on_HPC_83e3857e55.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/vs_Code_on_HPC_83e3857e55.mp4" type="video/mp4"></video>
 
 ## HPC Custom Tool Installation
 
@@ -115,4 +115,4 @@ Your project directory is accessible on all compute nodes, making it a suitable 
 
 ### Custom tool installation video guideline
 
-<video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Custom_Tool_a441c48186.mp4" type="video/mp4"></video>
+<video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/Custom_Tool_a441c48186.mp4" type="video/mp4"></video>

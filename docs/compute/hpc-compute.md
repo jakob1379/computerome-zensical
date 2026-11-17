@@ -45,7 +45,7 @@ You can access the cluster in two ways:
 
     :lucide-monitor-play: **SSH to HPC video guideline**
 
-    <video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/SSH_to_HPC_ce7f0a9893.mp4" type="video/mp4"></video>
+    <video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/SSH_to_HPC_ce7f0a9893.mp4" type="video/mp4"></video>
 
 === ":lucide-monitor: ThinLinc (Graphical Login)"
 
@@ -58,7 +58,7 @@ You can access the cluster in two ways:
 
     :lucide-monitor-play: **HPC ThinLinc Login video guideline**
 
-    <video controls preload="metadata" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/HPC_Thinlinc_Login_b009b0d557.mp4" type="video/mp4"></video>
+    <video controls preload="none" width="100%"><source src="https://delphiapp.computerome.dk/strapi/uploads/HPC_Thinlinc_Login_b009b0d557.mp4" type="video/mp4"></video>
 
 ## Node Types
 
