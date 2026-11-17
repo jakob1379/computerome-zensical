@@ -96,6 +96,10 @@
         {% include "partials/search.html" %}
       {% endif %}
     {% endif %}
+    <span class="cr-lang" title="The wiki is only available in English">
+      <img src="{{ 'assets/flag-gb.svg' | url }}" alt="" width="20" height="15">
+      <span>en</span>
+    </span>
     <a class="cr-signin" href="{{ site }}/login">
       {% include ".icons/lucide/circle-user.svg" %}
       <span>Sign in</span>
