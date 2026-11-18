@@ -14,7 +14,8 @@ uv run zensical build      # static site in site/
 ```
 
 Builds need [`pngquant`](https://pngquant.org) on `PATH` for the image optimizer
-(`apt install pngquant`, `brew install pngquant` or `nix shell nixpkgs#pngquant`).
+(`apt install pngquant` or `brew install pngquant`). With Nix, `nix develop` gives
+a shell with Python 3.14, uv and pngquant.
 
 Pushes to `main` deploy to GitHub Pages via `.github/workflows/docs.yml`.
 
