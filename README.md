@@ -3,6 +3,8 @@
 The [Computerome wiki](https://computerome.dk/wiki) ported from its Strapi CMS to a
 static [Zensical](https://zensical.org) site.
 
+Live site: <https://jgalabs.dk/computerome-zensical/>
+
 ## Usage
 
 ```bash
