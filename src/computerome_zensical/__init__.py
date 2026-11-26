@@ -1,15 +1,21 @@
 import json
 import posixpath
 import re
+import subprocess
 import sys
+import tempfile
 import textwrap
+import urllib.error
 import urllib.request
 from pathlib import Path
+
+import stamina
 
 API = "https://delphiapp.computerome.dk/strapi/api"
 UPLOADS = "https://delphiapp.computerome.dk/strapi/uploads/"
 SITE = "https://computerome.dk"
 DOCS = Path("docs")
+BASE = Path("upstream")
 ASSETS = "assets/uploads"
 SKIP = {"user-guide"}
 MAX_VENDORED_BYTES = 5_000_000
@@ -26,12 +32,23 @@ ICONS = {
 ADMONITION_KINDS = {"info": "info", "tips": "tip"}
 
 
+def retryable(exc: Exception) -> bool | float:
+    if isinstance(exc, urllib.error.HTTPError):
+        if exc.code != 429 and exc.code < 500:
+            return False
+        retry_after = exc.headers.get("Retry-After", "")
+        return min(float(retry_after), 300) if retry_after.isdigit() else True
+    return isinstance(exc, OSError)
+
+
+@stamina.retry(on=retryable, attempts=6, timeout=None, wait_max=60)
 def fetch(url: str) -> bytes:
     req = urllib.request.Request(url, headers={"User-Agent": "computerome-zensical"})
     with urllib.request.urlopen(req, timeout=60) as resp:
         return resp.read()
 
 
+@stamina.retry(on=retryable, attempts=6, timeout=None, wait_max=60)
 def size(url: str) -> int:
     req = urllib.request.Request(url, method="HEAD", headers={"User-Agent": "computerome-zensical"})
     with urllib.request.urlopen(req, timeout=60) as resp:
@@ -280,28 +297,73 @@ def frontmatter(wiki: dict) -> str:
     return "\n".join(lines + ["---", "", ""])
 
 
+def fetch_wikis() -> list[dict]:
+    wikis, page, pages = [], 1, 1
+    while page <= pages:
+        data = json.loads(fetch(f"{API}/wikis?pagination[page]={page}&pagination[pageSize]=100&populate=*"))
+        wikis += data["data"]
+        pages = data["meta"]["pagination"]["pageCount"]
+        page += 1
+    return wikis
+
+
+def merge(local: Path, base: Path, new: str) -> tuple[str, bool]:
+    with tempfile.NamedTemporaryFile("w", suffix=".md") as tmp:
+        tmp.write(new)
+        tmp.flush()
+        cmd = ["git", "merge-file", "-p", "--diff3", "-L", "docs", "-L", "previous-upstream", "-L", "upstream"]
+        result = subprocess.run([*cmd, local, base, tmp.name], capture_output=True, text=True)
+    if result.returncode < 0 or result.returncode > 127:
+        raise RuntimeError(f"git merge-file failed on {local}: {result.stderr}")
+    return result.stdout, result.returncode == 0
+
+
+def sync(pages: dict[str, str], docs: Path = DOCS, base: Path = BASE) -> list[tuple[str, str]]:
+    """Three-way merge each upstream page into docs/, using the snapshot in base/ as the common ancestor."""
+    report = []
+    for path, new in pages.items():
+        local, snapshot = docs / path, base / path
+        if not local.exists():
+            status = "new"
+            local.parent.mkdir(parents=True, exist_ok=True)
+            local.write_text(new)
+        elif not snapshot.exists():
+            status = "baseline"
+        elif snapshot.read_text() == new:
+            continue
+        else:
+            merged, clean = merge(local, snapshot, new)
+            local.write_text(merged)
+            status = "merged" if clean else "conflict"
+        snapshot.parent.mkdir(parents=True, exist_ok=True)
+        snapshot.write_text(new)
+        report.append((status, path))
+    for snapshot in sorted(base.rglob("*.md")):
+        path = snapshot.relative_to(base).as_posix()
+        if path not in pages:
+            snapshot.unlink()
+            report.append(("removed", path))
+    return report
+
+
 def main() -> None:
-    wikis = json.loads(fetch(f"{API}/wikis?pagination[pageSize]=200&populate=*"))["data"]
-    wikis = [w for w in wikis if w["url_slug_full"] not in SKIP]
+    wikis = [w for w in fetch_wikis() if w["url_slug_full"] not in SKIP]
     paths = page_paths(wikis)
     contents = {w["url_slug_full"]: html_to_markdown(w["content"] or "") for w in wikis}
     headings = heading_index(wikis, contents, paths)
     assets: set[str] = set()
+    pages = {}
     for wiki in wikis:
         slug = wiki["url_slug_full"]
         body = rewrite_links(contents[slug], paths[slug], paths, headings, assets)
         if not re.match(r"^# ", body):
             body = f"# {wiki['title'].strip()}\n\n{body}"
-        out = DOCS / paths[slug]
-        if out.exists():
-            print(f"kept {out} (delete it to re-import)")
-            continue
-        out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(frontmatter(wiki) + body)
-        print(f"wrote {out}")
+        pages[paths[slug]] = frontmatter(wiki) + body
+    for status, path in sync(pages):
+        print(f"{status} {path}")
     for name in sorted(assets):
         out = DOCS / ASSETS / name
         if not out.exists():
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_bytes(fetch(UPLOADS + name))
-            print(f"downloaded {out}")
+            print(f"downloaded {ASSETS}/{name}")

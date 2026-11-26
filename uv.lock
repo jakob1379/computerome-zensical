@@ -16,11 +16,15 @@ name = "computerome-zensical"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "stamina" },
     { name = "zensical" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "zensical", specifier = ">=0.1.1" }]
+requires-dist = [
+    { name = "stamina", specifier = ">=26.2.0" },
+    { name = "zensical", specifier = ">=0.1.1" },
+]
 
 [[package]]
 name = "jinja2"
@@ -176,6 +180,27 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/da/92/1446574745d74df0c92e6aa4a7b0b3130706a4142b2d1a5869f2eaa423c6/pyyaml-6.0.3-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:16249ee61e95f858e83976573de0f5b2893b3677ba71c9dd36b9cf8be9ac6d65", size = 829923, upload-time = "2025-09-25T21:32:54.537Z" },
     { url = "https://files.pythonhosted.org/packages/f0/7a/1c7270340330e575b92f397352af856a8c06f230aa3e76f86b39d01b416a/pyyaml-6.0.3-cp314-cp314t-win_amd64.whl", hash = "sha256:4ad1906908f2f5ae4e5a8ddfce73c320c2a1429ec52eafd27138b7f1cbe341c9", size = 174062, upload-time = "2025-09-25T21:32:55.767Z" },
     { url = "https://files.pythonhosted.org/packages/f1/12/de94a39c2ef588c7e6455cfbe7343d3b2dc9d6b6b2f40c4c6565744c873d/pyyaml-6.0.3-cp314-cp314t-win_arm64.whl", hash = "sha256:ebc55a14a21cb14062aa4162f906cd962b28e2e9ea38f9b4391244cd8de4ae0b", size = 149341, upload-time = "2025-09-25T21:32:56.828Z" },
+]
+
+[[package]]
+name = "stamina"
+version = "26.2.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "tenacity" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/4e/46/e5491b7985761f6870bf11af1c461f57102f564686f2fe7b8637ebcbb0f9/stamina-26.2.0.tar.gz", hash = "sha256:c81efa445d6cd6f898584faa7556df09f6e4d25c16e219914b6422eeb3372985", size = 670204, upload-time = "2026-11-15T12:58:06.696Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/fe/14/ff4255606425fb66f0f4e0f5ac30e98c87a1895df615fe97ce662c551e52/stamina-26.2.0-py3-none-any.whl", hash = "sha256:4c9688f204d90544cd0c5bdd2a66fd82c6e7cb8248d70687ac69da3e7f5434f6", size = 23326, upload-time = "2026-11-15T12:58:04.938Z" },
+]
+
+[[package]]
+name = "tenacity"
+version = "9.2.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/82/9e/497c1c8ebe5a5b5d1d4a7511aea22c0bb1a97e3170d98abdef0e1b34265a/tenacity-9.2.1.tar.gz", hash = "sha256:a606b5c808d0cded4a359d5b9932d867ff2a6a6b64d37350260fd01bbdf83839", size = 58261, upload-time = "2026-10-07T12:13:01.633Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d6/26/1ff2b0721ac66a3ec5b1402b333110b352ab0a8724052ac279a7b82d40c4/tenacity-9.2.1-py3-none-any.whl", hash = "sha256:9e56f17539296baab7beabb08b92f6ee3d7be92d8be72d763360677c2ad6580e", size = 32310, upload-time = "2026-10-07T12:13:00.102Z" },
 ]
 
 [[package]]

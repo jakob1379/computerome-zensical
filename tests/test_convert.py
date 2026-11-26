@@ -1,4 +1,7 @@
-from computerome_zensical import escape_placeholders, html_to_markdown, normalize_lists
+import tempfile
+from pathlib import Path
+
+from computerome_zensical import escape_placeholders, html_to_markdown, normalize_lists, sync
 
 
 def test_nested_lists_get_four_space_indent_and_leading_blank_line():
@@ -34,6 +37,26 @@ def test_placeholders_escaped_only_outside_code():
     assert escape_placeholders(src) == (
         "Use qstat -u &lt;username&gt; or `checkjob <jobid>`\n```bash\nls <dir>\n```\ncd /home/projects/&lt;project-name&gt;/"
     )
+
+
+def test_sync_merges_upstream_changes_into_hand_edits():
+    with tempfile.TemporaryDirectory() as tmp:
+        docs, base = Path(tmp, "docs"), Path(tmp, "upstream")
+        upstream = "# Page\n\nIntro.\n\nA\n\nB\n\nC\n\nD\n"
+        assert sync({"p.md": upstream, "gone.md": "x\n"}, docs, base) == [("new", "p.md"), ("new", "gone.md")]
+        (docs / "p.md").write_text(upstream.replace("Intro.", "!!! tip\n\n    Intro."))
+        assert sync({"p.md": upstream, "gone.md": "x\n"}, docs, base) == []
+
+        assert sync({"p.md": upstream.replace("D", "D2")}, docs, base) == [("merged", "p.md"), ("removed", "gone.md")]
+        assert (docs / "p.md").read_text() == "# Page\n\n!!! tip\n\n    Intro.\n\nA\n\nB\n\nC\n\nD2\n"
+        assert (docs / "gone.md").exists() and not (base / "gone.md").exists()
+
+        assert sync({"p.md": upstream.replace("Intro.", "New intro.").replace("D", "D2")}, docs, base)[0] == ("conflict", "p.md")
+        assert "<<<<<<< docs" in (docs / "p.md").read_text()
+
+        docs.joinpath("q.md").write_text("hand written\n")
+        assert sync({"q.md": "upstream\n"}, docs, base)[0] == ("baseline", "q.md")
+        assert docs.joinpath("q.md").read_text() == "hand written\n"
 
 
 if __name__ == "__main__":
