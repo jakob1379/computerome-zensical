@@ -10,6 +10,9 @@ concurrency: sync-upstream
 jobs:
   sync:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     env:
       CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
     steps:
