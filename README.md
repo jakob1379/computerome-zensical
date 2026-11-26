@@ -54,17 +54,11 @@ For each page it prints one status line:
 HTTP calls retry with backoff via [stamina](https://stamina.hynek.me), honouring
 `Retry-After` on 429s.
 
-`.github/workflows/sync.yml` runs this every Monday and opens a PR on the
-`upstream-sync` branch. For `new` and `conflict` pages it first runs
-[Claude Code](https://github.com/anthropics/claude-code-action) to resolve markers
-and restyle new pages to match the site. Setup:
-
-1. `claude setup-token`, then store the token as the repo secret `CLAUDE_CODE_OAUTH_TOKEN`.
-   Without it the PR still opens, with conflict markers left for a human (as a draft).
-2. Settings → Actions → General → enable *Allow GitHub Actions to create and approve pull requests*.
-
-PRs opened with `GITHUB_TOKEN` do not trigger other workflows, so the sync job runs the
-strict build itself and opens the PR as a draft if it fails.
+The CMS blocks cloud IPs, so GitHub Actions cannot reach it. The sync runs every
+Monday as a T3 Code scheduled task on a machine with access instead: an agent runs the
+command above in a fresh worktree, resolves `conflict` markers and restyles `new` pages
+to match the site (adding them to `nav`), runs the strict build, and opens or updates a
+PR from the `upstream-sync` branch.
 
 It pulls `https://delphiapp.computerome.dk/strapi/api/wikis`, converts the CMS
 HTML/CommonMark mix to Python-Markdown (admonitions, list indentation, icons,
