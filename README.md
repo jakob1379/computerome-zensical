@@ -1,9 +1,14 @@
 # Computerome Wiki (Zensical)
 
 The [Computerome wiki](https://computerome.dk/wiki) ported from its Strapi CMS to a
-static [Zensical](https://zensical.org) site.
+static [Zensical](https://zensical.org) site, kept in step with the CMS by a weekly
+three-way merge.
 
-Live site: <https://jgalabs.dk/computerome-zensical/>
+**Live site:** <https://jgalabs.dk/computerome-zensical/>
+
+<p align="center">
+  <img src=".github/assets/sync-pipeline.svg" width="100%" alt="Sync pipeline: a wiki page leaves the Strapi CMS, is converted from HTML to Markdown, is three-way merged with git merge-file into the hand-edited docs/ folder using upstream/ as the merge base, lands in an upstream-sync pull request with a strict build, and is published to GitHub Pages.">
+</p>
 
 ## Usage
 
@@ -41,6 +46,12 @@ machine-converted copy of each CMS page and serves as the merge base:
 uv run computerome-zensical
 ```
 
+It pulls `https://delphiapp.computerome.dk/strapi/api/wikis`, converts the CMS
+HTML/CommonMark mix to Python-Markdown (admonitions, list indentation, icons,
+escaped placeholders), rewrites wiki links to relative `.md` links and vendors
+uploads up to 5 MB. Videos (about 3 GB) and the large workshop slide decks stay
+linked to the CMS.
+
 For each page it prints one status line:
 
 | Status | Meaning |
@@ -54,19 +65,15 @@ For each page it prints one status line:
 HTTP calls retry with backoff via [stamina](https://stamina.hynek.me), honouring
 `Retry-After` on 429s.
 
+The old all-in-one `user-guide` page duplicated the split pages, so it is not
+imported; `/user-guide/` redirects to Getting Started.
+
+Converter checks: `uv run python tests/test_convert.py`.
+
+### Weekly automation
+
 The CMS blocks cloud IPs, so GitHub Actions cannot reach it. The sync runs every
 Monday as a T3 Code scheduled task on a machine with access instead: an agent runs the
 command above in a fresh worktree, resolves `conflict` markers and restyles `new` pages
 to match the site (adding them to `nav`), runs the strict build, and opens or updates a
 PR from the `upstream-sync` branch.
-
-It pulls `https://delphiapp.computerome.dk/strapi/api/wikis`, converts the CMS
-HTML/CommonMark mix to Python-Markdown (admonitions, list indentation, icons,
-escaped placeholders), rewrites wiki links to relative `.md` links and vendors
-uploads up to 5 MB. Videos (about 3 GB) and the large workshop slide decks stay
-linked to the CMS.
-
-The old all-in-one `user-guide` page duplicated the split pages, so it is not
-imported; `/user-guide/` redirects to Getting Started.
-
-Converter checks: `uv run python tests/test_convert.py`.
