@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="960" height="360" role="img" aria-labelledby="t d">
+<title id="t">Computerome wiki sync pipeline</title>
+<desc id="d">A wiki page leaves the Strapi CMS, is converted from HTML to Markdown, is three-way merged into the hand-edited docs/ folder with upstream/ as the merge base, lands in an upstream-sync pull request with a strict build, and appears on the GitHub Pages site.</desc>
+<style>
+:root{--bg:#f4f8f7;--card:#ffffff;--line:#c1cdcc;--ink:#1b365f;--muted:#5b6f6d;--teal:#125b53;--tint:#d2dedd;--html:#43a4d9;--ok:#0ca678;--okbg:#d9f3ea;--bar:#125b53;--barink:#ffffff;--ghost:#e3eae9}
+@media (prefers-color-scheme:dark){:root{--bg:#0b2422;--card:#11312e;--line:#2c4f4b;--ink:#e6eeed;--muted:#94aeab;--teal:#76a09d;--tint:#1c4440;--html:#43a4d9;--ok:#2fd39f;--okbg:#103f33;--bar:#125b53;--barink:#e6eeed;--ghost:#24433f}}
+.bg{fill:var(--bg)}
+.card{fill:var(--card);stroke:var(--line);stroke-width:1.5}
+.h{font:600 16px ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;fill:var(--ink)}
+.big{font:650 24px ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;fill:var(--ink)}
+.s{font:400 14px ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;fill:var(--muted)}
+.m{font:400 12.5px ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;fill:var(--muted)}
+.mi{font:500 13px ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;fill:var(--ink)}
+.track{stroke:var(--line);stroke-width:2;fill:none}
+.arrow{fill:var(--line)}
+.row{fill:var(--ghost)}
+.ico{fill:var(--html)}
+.pill{fill:var(--okbg)}
+.pilltx{font:600 12.5px ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;fill:var(--ok)}
+.tick{fill:none;stroke:var(--ok);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.bar{fill:var(--bar)}
+.bartx{font:600 12px ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;fill:var(--barink)}
+.newrow{fill:var(--teal)}
+.dot{fill:var(--teal)}
+
+.anim{animation-duration:10s;animation-iteration-count:infinite;animation-timing-function:ease-in-out}
+.packet{animation-name:packet;animation-timing-function:linear}
+.n1{animation-name:n1}.n2{animation-name:n2}.n3{animation-name:n3}.n4{animation-name:n4}.n5{animation-name:n5}
+.hl{animation-name:hl}
+.vin{animation-name:vin}.vup{animation-name:vup}
+.st{animation-name:st}
+.ck{animation-name:ck}
+.grow{transform-box:fill-box;transform-origin:left center;animation-name:grow}
+
+@keyframes packet{
+0%{transform:translateX(200px);opacity:0;fill:var(--html)}
+3%{transform:translateX(200px);opacity:1;fill:var(--html)}
+11%{transform:translateX(236px);opacity:1;fill:var(--html)}
+12%,24%{transform:translateX(236px);opacity:0;fill:var(--html)}
+25%{transform:translateX(376px);opacity:0;fill:var(--teal)}
+26%{transform:translateX(376px);opacity:1;fill:var(--teal)}
+34%{transform:translateX(412px);opacity:1;fill:var(--teal)}
+35%,53%{transform:translateX(412px);opacity:0;fill:var(--teal)}
+54%{transform:translateX(572px);opacity:0;fill:var(--teal)}
+55%{transform:translateX(572px);opacity:1;fill:var(--teal)}
+63%{transform:translateX(608px);opacity:1;fill:var(--teal)}
+64%,74%{transform:translateX(608px);opacity:0;fill:var(--teal)}
+75%{transform:translateX(748px);opacity:0;fill:var(--teal)}
+76%{transform:translateX(748px);opacity:1;fill:var(--teal)}
+84%{transform:translateX(784px);opacity:1;fill:var(--teal)}
+85%,100%{transform:translateX(784px);opacity:0;fill:var(--teal)}}
+@keyframes hl{0%,1%{fill:var(--ghost)}4%,10%{fill:var(--html)}14%,100%{fill:var(--ghost)}}
+@keyframes n1{0%,1%,16%,100%{stroke:var(--line)}4%,11%{stroke:var(--html)}}
+@keyframes n2{0%,10%,28%,100%{stroke:var(--line)}13%,24%{stroke:var(--teal)}}
+@keyframes n3{0%,33%,58%,100%{stroke:var(--line)}36%,53%{stroke:var(--teal)}}
+@keyframes n4{0%,62%,78%,100%{stroke:var(--line)}65%,74%{stroke:var(--teal)}}
+@keyframes n5{0%,83%,96%,100%{stroke:var(--line)}86%,93%{stroke:var(--teal)}}
+@keyframes vin{0%,35%{transform:translateY(0);opacity:0}37%{opacity:1}46%{transform:translateY(44px);opacity:1}47%,100%{transform:translateY(44px);opacity:0}}
+@keyframes vup{0%,35%{transform:translateY(0);opacity:0}37%{opacity:1}46%{transform:translateY(-44px);opacity:1}47%,100%{transform:translateY(-44px);opacity:0}}
+@keyframes st{0%,47%{opacity:0}50%,94%{opacity:1}98%,100%{opacity:0}}
+@keyframes ck{0%,67%{opacity:0}70%,94%{opacity:1}98%,100%{opacity:0}}
+@keyframes grow{0%,85%{transform:scaleX(0)}91%,95%{transform:scaleX(1)}99%,100%{transform:scaleX(0)}}
+
+@media (prefers-reduced-motion:reduce){
+.anim{animation:none}
+.packet,.vin,.vup{opacity:0}
+.st,.ck{opacity:1}
+.grow{transform:none}
+.n3{stroke:var(--teal)}
+}
+</style>
+<defs>
+<marker id="a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto"><path class="arrow" d="M0 0L8 4L0 8z"/></marker>
+</defs>
+<rect class="bg" width="960" height="360" rx="16"/>
+
+<text class="big" x="24" y="50">Computerome Wiki</text>
+<text class="s" x="24" y="74">computerome.dk/wiki as a static Zensical site</text>
+
+<g class="track">
+<path d="M202 170H234" marker-end="url(#a)"/>
+<path d="M378 170H410" marker-end="url(#a)"/>
+<path d="M574 170H606" marker-end="url(#a)"/>
+<path d="M750 170H782" marker-end="url(#a)"/>
+<path d="M492 76V118" marker-end="url(#a)"/>
+<path d="M492 264V222" marker-end="url(#a)"/>
+</g>
+
+<rect class="card anim n1" x="24" y="95" width="176" height="150" rx="12"/>
+<text class="h" x="40" y="122">Strapi CMS</text>
+<text class="m" x="40" y="142">computerome.dk/wiki</text>
+<rect class="ico" x="40" y="158" width="8" height="8" rx="2"/><rect class="row" x="56" y="159" width="116" height="6" rx="3"/>
+<rect class="ico" x="40" y="176" width="8" height="8" rx="2"/><rect class="row anim hl" x="56" y="177" width="96" height="6" rx="3"/>
+<rect class="ico" x="40" y="194" width="8" height="8" rx="2"/><rect class="row" x="56" y="195" width="124" height="6" rx="3"/>
+<rect class="ico" x="40" y="212" width="8" height="8" rx="2"/><rect class="row" x="56" y="213" width="84" height="6" rx="3"/>
+
+<rect class="card anim n2" x="236" y="120" width="140" height="100" rx="12"/>
+<text class="h" x="252" y="147">convert</text>
+<text class="m" x="252" y="170">HTML → Markdown</text>
+<text class="m" x="252" y="192">links → .md</text>
+
+<rect class="card" x="432" y="44" width="120" height="30" rx="15"/>
+<text class="mi" x="492" y="64" text-anchor="middle">upstream/</text>
+<text class="s" x="564" y="64">merge base</text>
+<rect class="card" x="432" y="266" width="120" height="30" rx="15"/>
+<text class="mi" x="492" y="286" text-anchor="middle">docs/</text>
+<text class="s" x="564" y="286">hand-edited</text>
+<circle class="dot anim vin" cx="492" cy="76" r="5"/>
+<circle class="dot anim vup" cx="492" cy="264" r="5"/>
+
+<rect class="card anim n3" x="412" y="120" width="160" height="100" rx="12"/>
+<text class="h" x="428" y="147">3-way merge</text>
+<text class="m" x="428" y="168">git merge-file</text>
+<g class="anim st"><rect class="pill" x="428" y="181" width="68" height="24" rx="12"/><text class="pilltx" x="462" y="197" text-anchor="middle">merged</text></g>
+
+<rect class="card anim n4" x="608" y="120" width="140" height="100" rx="12"/>
+<text class="h" x="624" y="147">pull request</text>
+<text class="m" x="624" y="168">upstream-sync</text>
+<path class="tick anim ck" d="M625 192l4 4 8-9"/>
+<text class="s" x="644" y="197">strict build</text>
+
+<rect class="card anim n5" x="784" y="110" width="152" height="120" rx="12"/>
+<path class="bar" d="M784 122a12 12 0 0 1 12-12h128a12 12 0 0 1 12 12v12H784z"/>
+<text class="bartx" x="796" y="127">Computerome Wiki</text>
+<rect class="row" x="796" y="146" width="30" height="5" rx="2.5"/>
+<rect class="row" x="796" y="158" width="24" height="5" rx="2.5"/>
+<rect class="row" x="796" y="170" width="28" height="5" rx="2.5"/>
+<rect class="row" x="836" y="146" width="88" height="5" rx="2.5"/>
+<rect class="row" x="836" y="158" width="72" height="5" rx="2.5"/>
+<rect class="row" x="836" y="170" width="84" height="5" rx="2.5"/>
+<rect class="newrow anim grow" x="836" y="184" width="64" height="5" rx="2.5"/>
+<rect class="row" x="836" y="198" width="78" height="5" rx="2.5"/>
+<text class="s" x="796" y="222">GitHub Pages</text>
+
+<circle class="packet anim" cx="0" cy="170" r="6"/>
+
+<text class="s" x="24" y="336">Every Monday, a scheduled task pulls the CMS, merges changed pages into docs/ and opens a pull request.</text>
+</svg>
